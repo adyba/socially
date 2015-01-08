@@ -1,0 +1,47 @@
+<template name="parties-list.html">
+  <form>
+      <label>Name</label>
+      <input type="text" ng-model="newParty.name" /><br>
+      <label>Description</label>
+      <input type="text" ng-model="newParty.description" />
+      <!--<input type="checkbox" ng-model="newParty.public" /><br> -->
+      <button ng-click="addParty(newParty)">Add</button>
+      <hr>
+    </form>
+
+  Parties:
+  <div>
+    Search
+    <input type="search" ng-model="search">
+      <select ng-model="orderProperty">
+        <option value="name">Ascending</option>
+        <option value="-name">Descending</option>
+      </select>
+  </div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Party</th>
+          <th>Description</th>
+          <th>Commands</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="party in parties | filter:search | orderBy:orderProperty ">
+          <td><a href="/parties/[[party._id]]">[[party.name]]</a></td>
+          <td>[[party.description]]</td>
+          <td><button ng-click="remove(party)">X</button></td>
+        </tr>
+      </tbody>
+      </table>  
+    <!--
+      <ul>
+      <li ng-repeat="party in parties | filter:search | orderBy:orderProperty ">
+      <a href="/parties/[[party._id]]">[[party.name]]</a>
+
+      <p>[[party.description]]</p>
+      <button ng-click="remove(party)">X</button>
+    </li>
+  </ul>
+  -->
+</template>

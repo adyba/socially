@@ -1,0 +1,18 @@
+<template name="party-details.html">
+ Here you will see and change the details of the party:
+
+  <input ng-model="party.name" type="text" />
+  <input ng-model="party.description" type="text" />
+  [[party.owner]]
+  <input ng-model="party.public" type="checkbox" />
+  <ul>
+    Users:
+    <li ng-repeat="user in users">
+      <!-- <div>[[ user.emails[0].address ]]</div> -->
+      <div>[[ user|json ]]</div>
+    </li>
+  </ul>
+
+  <button ng-click="saveParty()">Save</button>
+  <button><a href="/parties">Cancel</a></button>
+</template>  
